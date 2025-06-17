@@ -10,10 +10,14 @@
 # If you launchs the code in local and not from remote,you must comment the above code
 
 ## Modules
-# Call Tags Module
+# Bloque modificado en AKS/main.tf
+
 module "tags" {
-  source  = "tfe1.sgtech.corp/curated-catalog/module-tag/azurerm"
-  version = ">=1.0.0"
+  # Apuntamos a la ruta relativa de la carpeta que subiste
+  source = "../tags"
+
+  # ... las otras variables se mantienen igual
+}
 
   rsg_name       = var.rsg_name
   inherit        = var.inherit
