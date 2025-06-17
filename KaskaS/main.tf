@@ -53,8 +53,9 @@ data "azurerm_log_analytics_workspace" "main" {
 module "aks" {
   # El 'source' apunta al repositorio del módulo.
   # En un entorno real, podría ser una URL a un registro privado de Terraform.
-  source  = "git::https://github.com/jordilopezr/santa_aks.git"
-  version = "1.0.0" # IMPORTANTE: Debes usar la versión correcta del tag del módulo
+  # Se añade //AKS para apuntar a la subcarpeta correcta dentro del repositorio
+  source  = "git::https://github.com/jordilopezr/Santa_AKS.git//AKS?ref=main"
+  #version = "1.0.0" # IMPORTANTE: Debes usar la versión correcta del tag del módulo
 
   # ---- Variables Obligatorias del Módulo ----
 
