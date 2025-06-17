@@ -14,7 +14,7 @@
 
 module "tags" {
   # Apuntamos a la ruta relativa de la carpeta que subiste
-  source = "../tags"
+  source = "./tags"
 
   # ... las otras variables se mantienen igual
 }

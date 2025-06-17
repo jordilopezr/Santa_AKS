@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"aks","Source":"git::https://github.com/jordilopezr/Santa_AKS.git//AKS?ref=main","Dir":".terraform/modules/aks/AKS"},{"Key":"aks.tags","Source":"../tags","Dir":".terraform/modules/aks/tags"}]}
