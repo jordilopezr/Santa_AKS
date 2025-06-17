@@ -53,8 +53,8 @@ data "azurerm_log_analytics_workspace" "main" {
 module "aks" {
   # El 'source' apunta al repositorio del módulo.
   # En un entorno real, podría ser una URL a un registro privado de Terraform.
-  # Se añade //AKS para apuntar a la subcarpeta correcta dentro del repositorio
-  source  = "git::https://github.com/jordilopezr/Santa_AKS.git//AKS?ref=main"
+  # Esta ruta apunta al módulo AKS en GitHub
+  source = "git::https://github.com/jordilopezr/Santa_AKS.git//AKS?ref=main"
   #version = "1.0.0" # IMPORTANTE: Debes usar la versión correcta del tag del módulo
 
   # ---- Variables Obligatorias del Módulo ----
@@ -106,7 +106,7 @@ module "aks" {
     owner       = "team-open-finance" # Actualizado
   }
 }
-
+https://github.com/jordilopezr/Santa_AKS/tree/4e7c045e6301c98b2e7031d0741538c1c27d5f38/tags
 
 # 4. SALIDAS (OUTPUTS)
 # Exponemos la información útil que nos devuelve el módulo.
