@@ -1,19 +1,21 @@
 #Required for more providers
-# terraform {
-#   required_providers {
-#     azurerm = {
-#       source                = "hashicorp/azurerm"
-#       configuration_aliases = [azurerm, azurerm.dnssubscription]
-#     }
-#   }
-# }
+ terraform {
+  required_version = ">= 1.7.1"
+   required_providers {
+     azurerm = {
+       source                = "hashicorp/azurerm"
+       version = "~> 3.90.0"
+       configuration_aliases = [azurerm, azurerm.dnssubscription]
+     }
+   }
+ }
 # If you launchs the code in local and not from remote,you must comment the above code
 
 ## Modules
 # Call Tags Module
 module "tags" {
-  source  = "tfe1.sgtech.corp/curated-catalog/module-tag/azurerm"
-  version = ">=1.0.0"
+  source  = "../modules/tags"
+  #version = ">=1.0.0"
 
   rsg_name       = var.rsg_name
   inherit        = var.inherit
@@ -56,12 +58,12 @@ locals {
     max_pods  = lookup(var.default_node_pool, "max_pods", 110)
   }
 
-  http_proxy_config = {
-    http_proxy  = var.http_proxy_config.http_proxy == null ? "http://proxy.sig.umbrella.com:80/" : var.http_proxy_config.http_proxy
-    https_proxy = var.http_proxy_config.https_proxy == null ? "http://proxy.sig.umbrella.com:443/" : var.http_proxy_config.https_proxy
-    no_proxy    = var.http_proxy_config.no_proxy == null ? [".corp", "sts.gsnetcloud.com", ".cluster.local.", ".cluster.local", ".svc", "10.112.0.0/16"] : var.http_proxy_config.no_proxy
-    trusted_ca  = var.http_proxy_config.trusted_ca == null ? filebase64("${path.module}/certs/Cisco_Umbrella_CA.cer") : var.http_proxy_config.trusted_ca
-  }
+  #http_proxy_config = {
+  #  http_proxy  = var.http_proxy_config.http_proxy == null ? "http://proxy.sig.umbrella.com:80/" : var.http_proxy_config.http_proxy
+  #  https_proxy = var.http_proxy_config.https_proxy == null ? "http://proxy.sig.umbrella.com:443/" : var.http_proxy_config.https_proxy
+  #  no_proxy    = var.http_proxy_config.no_proxy == null ? [".corp", "sts.gsnetcloud.com", ".cluster.local.", ".cluster.local", ".svc", "10.112.0.0/16"] : var.http_proxy_config.no_proxy
+  #  trusted_ca  = var.http_proxy_config.trusted_ca == null ? filebase64("${path.module}/certs/Cisco_Umbrella_CA.cer") : var.http_proxy_config.trusted_ca
+  #}
   
 }
 
